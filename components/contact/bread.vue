@@ -16,7 +16,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .bread {
-  width: 1360px;
+  width: 1340px;
   height: 30px;
   margin: 0 auto;
   margin-top: 10px;

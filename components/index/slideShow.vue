@@ -1,46 +1,89 @@
 <template>
   <div class="slideShow">
-    <el-carousel height="570px">
-      <el-carousel-item v-for="item in slideList" :key="item.id">
-        <img :src="item.src" />
-      </el-carousel-item>
-    </el-carousel>
+    <el-row>
+      <el-col :span="24">
+        <el-carousel
+          id="el-carousel"
+        >
+          <el-carousel-item v-for="item in slideList" :key="item.id">
+            <img :src="$imgUrl + item.fileName" />
+          </el-carousel-item>
+        </el-carousel>
+      </el-col>
+    </el-row>
   </div>
 </template>
 <script>
+import fetchData from "@/utils/fetchData";
 export default {
   name: "slideShow",
   data() {
     return {
-      slideList: [
-        { id: 0, src: "/index/Web2x/a1-banner.png" },
-        { id: 1, src: "/index/Web2x/a1-banner.png" },
-        { id: 2, src: "/index/Web2x/a1-banner.png" },
-      ],
+      slideList: [],
+      bannerHeight: 570,
+      screenWidth: 1920,
     };
+  },
+  methods: {
+    async getData() {
+      let res = await fetchData({
+        url: "/banner/list",
+        data: {},
+      });
+      if (!res) return;
+      this.slideList = res.data;
+      this.slideList.map((item) => {
+        item.fileName = "/attachment/get_file/" + item.fileName;
+      });
+    },
+    setSize1() {
+      var width =
+        window.innerWidth ||
+        document.documentElement.clientWidth ||
+        document.body.clientWidth;
+      this.screenWidth = width;
+      //图片                高 / 宽  700 / 1920
+      this.bannerHeight = (570 / 1920) * this.screenWidth - 50;
+      document.getElementById("el-carousel").style.height =
+        this.bannerHeight + "px";
+    },
+    setSize() {
+      this.bannerHeight = (570 / 1920) * this.screenWidth - 50;
+      document.getElementById("el-carousel").style.height =
+        this.bannerHeight + "px";
+    },
+  },
+  mounted() {
+    this.setSize1();
+    const that = this;
+    //监听浏览器窗口大小改变
+    window.addEventListener(
+      "resize",
+      function () {
+        var width =
+          window.innerWidth ||
+          document.documentElement.clientWidth ||
+          document.body.clientWidth;
+        that.screenWidth = width;
+        that.setSize();
+      },
+      false
+    );
+    this.getData();
   },
 };
 </script>
-<style lang="less" scoped>
+<style lang="less">
 .slideShow {
   width: 100%;
-  height: 570px;
-  .el-carousel__item h3 {
-    color: #475669;
-    font-size: 14px;
-    opacity: 0.75;
-    line-height: 150px;
-    margin: 0;
-  }
-  .el-carousel {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    // z-index: -1;
-  }
-  img{
-    width: 100%;
-    height: auto;
+  .el-carousel__container {
+    height: 100% !important;
+    img {
+      display: inline-block;
+      height: auto;
+      width: 100%;
+    }
   }
 }
+
 </style>

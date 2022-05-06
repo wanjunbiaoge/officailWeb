@@ -6,32 +6,56 @@
       <ul>
         <li class="car">
           <img src="/index/Web1x/productShow/car.png" alt="" />
+          <nuxt-link
+            :to="{path:'/product/wearClass',query:{type:'PRODUCT_VEHICLE_TERMINAL',name:'车载终端类'}}"
+            class="productLink carLink"
+          ></nuxt-link>
           <span>车载终端类</span>
         </li>
         <li class="chuandai">
           <img src="/index/Web1x/productShow/chuandai.png" alt="" />
+          <nuxt-link
+            :to="{path:'/product/wearClass',query:{type:'PRODUCT_WEAR',name:'穿戴类'}}"
+            class="productLink wearLink"
+          ></nuxt-link>
           <span>穿戴类</span>
         </li>
         <li class="hand">
           <img src="/index/Web1x/productShow/hand.png" alt="" />
-          <span>车载手持类</span>
+          <nuxt-link
+            :to="{path:'/product/wearClass',query:{type:'PRODUCT_HAND_HOLD',name:'手持便携类'}}"
+            class="productLink holdLink"
+          ></nuxt-link>
+          <span>手持便携类</span>
         </li>
         <li class="gongneng">
           <img src="/index/Web1x/productShow/gongneng.png" alt="" />
+          <nuxt-link
+            :to="{path:'/product/wearClass',query:{type:'PRODUCT_FUNCTION',name:'功能类'}}"
+            class="productLink funLink"
+          ></nuxt-link>
           <span>功能类</span>
         </li>
         <li class="celiang">
           <img src="/index/Web1x/productShow/celiang.png" alt="" />
+          <nuxt-link
+            :to="{path:'/product/wearClass',query:{type:'PRODUCT_HIGH_ACCURACY_SURVEY',name:'高精度测量类'}}"
+            class="productLink celiangLink"
+          ></nuxt-link>
           <span>高精度测量类</span>
         </li>
         <li class="beidou">
           <img src="/index/Web1x/productShow/beidou.png" alt="" />
+          <nuxt-link
+            :to="{path:'/product/wearClass',query:{type:'PRODUCT_SHORT_MESSAGE',name:'北斗短报文类'}}"
+            class="productLink beidouLink"
+          ></nuxt-link>
           <span>北斗短报文类</span>
         </li>
       </ul>
     </div>
     <div class="more">
-      <nuxt-link to="/">更多</nuxt-link>
+      <nuxt-link to="/product/wearClass">更多</nuxt-link>
     </div>
   </div>
 </template>
@@ -54,7 +78,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .productShow {
-  width: 1360px;
+  width: 1340px;
   margin: 0 auto;
   margin-top: 50px;
   .title {
@@ -79,14 +103,19 @@ export default {
   }
   .productBox {
     position: relative;
-    width: 1360px;
-    height: 695px;
+    width: 1340px;
+    height: 685px;
+    .productLink {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
     ul li {
       position: absolute;
       width: 100%;
       img {
         width: 100%;
-        height: auto;
+        height: 100%;
       }
       span {
         position: absolute;
@@ -105,36 +134,60 @@ export default {
       height: 330px;
       top: 0;
       left: 0;
+      .carLink {
+        width: 660px;
+        height: 330px;
+      }
     }
     .chuandai {
       width: 315px;
       height: 330px;
       top: 0;
-      left: 690px;
+      left: 680px;
+      .wearLink {
+        width: 315px;
+        height: 330px;
+      }
     }
     .hand {
       width: 325px;
-      height: 695px;
+      height: 685px;
       top: 0;
       right: 0;
+      .holdLink {
+        width: 325px;
+        height: 685px;
+      }
     }
     .gongneng {
       width: 315px;
       height: 330px;
       bottom: 0;
       left: 0;
+      .funLink {
+        width: 315px;
+        height: 330px;
+      }
     }
     .celiang {
       width: 315px;
       height: 330px;
       bottom: 0;
       left: 345px;
+      .celiangLink {
+        width: 315px;
+        height: 330px;
+      }
     }
     .beidou {
       width: 315px;
       height: 330px;
       bottom: 0;
-      left: 690px;
+      left: 680px;
+      .beidouLink {
+        width: 315px;
+        height: 330px;
+      }
     }
   }
   .more {

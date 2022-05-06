@@ -1,7 +1,7 @@
 <template>
   <div class="pagenation">
     <el-pagination
-      :page-size="6"
+      :page-size="10"
       background
       layout="prev, pager, next"
       :total="pagenation.pageTotal"

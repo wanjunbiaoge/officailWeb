@@ -4,7 +4,7 @@
     <span class="nowSite">
       <span>当前位置 ：</span>
     </span>
-    <nuxt-link to="/product/wearClass">产品展示</nuxt-link>
+    <nuxt-link to="/solution/solution">成功案例</nuxt-link>
     <i>></i>
     <span>{{ name }}</span>
   </div>

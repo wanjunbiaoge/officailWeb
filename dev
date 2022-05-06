@@ -1,0 +1,2 @@
+"dev": "cross-env NUXT_HOST=192.168.10.74 NUXT_PORT=3000 nuxt",
+    // "dev": "nuxt",

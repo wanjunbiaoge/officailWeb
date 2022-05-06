@@ -2,16 +2,31 @@
   <div class="aboutSystem">
     <div class="title">关于平台</div>
     <div class="line"></div>
-    <img :src="aboutSystemImg" alt="">
+    <img :src="$imgUrl + aboutSystemImg" alt="" />
   </div>
 </template>
 <script>
+import fetchData from "@/utils/fetchData";
 export default {
-  name:'aboutSystem',
+  name: "aboutSystem",
   data() {
     return {
-      aboutSystemImg:'/index/Web2x/aboutSystem.png'
-    }
+      aboutSystemImg: "",
+    };
+  },
+  methods: {
+    async getData() {
+      let res = await fetchData({
+        url: "/server_config/list/ABOUT_PLATFORM",
+        data: {},
+      });
+      if (!res) return;
+      this.aboutSystemImg = "/attachment/get_file/" + res.data.value;
+      
+    },
+  },
+  mounted() {
+    this.getData();
   },
 };
 </script>
@@ -38,7 +53,7 @@ export default {
     background: radial-gradient(#3e92fc, #00efe1, #00efe1);
     border-radius: 4px;
   }
-  img{
+  img {
     width: 100%;
     height: auto;
   }

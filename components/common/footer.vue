@@ -13,15 +13,15 @@ export default {
 </script>
 <style lang="less" scoped>
 .commonFooter {
-  position: absolute;
+  // position: absolute;
   // bottom: 0;
   width: 100%;
-  height: 65px;
+  height: 68px;
   margin-top: 70px;
   background-color: #ececec;
   p {
     margin: 0 auto;
-    width: 1360px;
+    width: 1340px;
     height: 19px;
     font-size: 16px;
     font-family: MicrosoftYaHei;

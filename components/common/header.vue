@@ -1,7 +1,7 @@
 <template>
   <div class="commonHeader">
     <div class="nav">
-      <img src="/bdLogoDark.png" alt="logo" class="logo" />
+      <img src="/bdLogoBlue.png" alt="logo" class="logo" />
       <ul class="middle">
         <li class="middleTitle">
           <nuxt-link to="/" class="middleTitleName">网站首页</nuxt-link>
@@ -12,64 +12,111 @@
           </div>
           <ul class="aboutList middleTitleList">
             <li>
-              <nuxt-link to="/about/introduction" class="aboutHover middleTitleHover">公司简介</nuxt-link>
+              <nuxt-link
+                to="/about/introduction"
+                class="aboutHover middleTitleHover"
+                >公司简介</nuxt-link
+              >
             </li>
             <li>
-              <nuxt-link to="/about/culture" class="aboutHover middleTitleHover">企业文化</nuxt-link>
+              <nuxt-link to="/about/culture" class="aboutHover middleTitleHover"
+                >企业文化</nuxt-link
+              >
             </li>
             <li>
-              <nuxt-link to="/about/qualifications" class="aboutHover middleTitleHover">公司资质</nuxt-link>
-            </li>
-          </ul>
-        </li>
-        <li class="product middleTitle">
-          <div class="productName middleTitleName">
-            产品展示<i class="el-icon-caret-bottom"></i>
-          </div>
-          <ul class="productList middleTitleList">
-            <li>
-              <nuxt-link to="/product/wearClass" class="productHover middleTitleHover">穿戴类</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/product/funcClass" class="productHover middleTitleHover">功能类</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/product/vehicleClass" class="productHover middleTitleHover">车载终端</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/product/holdClass" class="productHover middleTitleHover">手持便携</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/product/beidouClass" class="productHover middleTitleHover">北斗短报文</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/product/measureClass" class="productHover middleTitleHover">高精度测量</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/product/applicationClass" class="productHover middleTitleHover">应用案例</nuxt-link>
+              <nuxt-link
+                to="/about/qualifications"
+                class="aboutHover middleTitleHover"
+                >公司资质</nuxt-link
+              >
             </li>
           </ul>
         </li>
         <li class="middleTitle">
-          <nuxt-link to="/application/application" class="middleTitleName">解决方案</nuxt-link>
-          <!-- <div class="middleTitleName">解决方案</div> -->
-          <!-- <ul class="middleTitleList">
+          <div class="middleTitleName">
+            产品展示<i class="el-icon-caret-bottom"></i>
+          </div>
+          <ul class="productList middleTitleList">
             <li>
-              <nuxt-link to="/about/about" class="middleTitleHover">警务</nuxt-link>
+              <nuxt-link
+                :to="{
+                  path: '/product/wearClass',
+                  query: { type: 'PRODUCT_WEAR', name: '穿戴类' },
+                }"
+                class="productHover middleTitleHover"
+                >穿戴类</nuxt-link
+              >
             </li>
             <li>
-              <nuxt-link to="/" class="middleTitleHover">非监禁系统</nuxt-link>
+              <nuxt-link
+                :to="{
+                  path: '/product/wearClass',
+                  query: { type: 'PRODUCT_FUNCTION', name: '功能类' },
+                }"
+                class="productHover middleTitleHover"
+                >功能类</nuxt-link
+              >
             </li>
             <li>
-              <nuxt-link to="/" class="middleTitleHover">多媒体</nuxt-link>
+              <nuxt-link
+                :to="{
+                  path: '/product/wearClass',
+                  query: {
+                    type: 'PRODUCT_VEHICLE_TERMINAL',
+                    name: '车载终端类',
+                  },
+                }"
+                class="productHover middleTitleHover"
+                >车载终端</nuxt-link
+              >
             </li>
             <li>
-              <nuxt-link to="/" class="middleTitleHover">公务用车管理</nuxt-link>
+              <nuxt-link
+                :to="{
+                  path: '/product/wearClass',
+                  query: { type: 'PRODUCT_HAND_HOLD', name: '手持便携类' },
+                }"
+                class="productHover middleTitleHover"
+                >手持便携</nuxt-link
+              >
             </li>
             <li>
-              <nuxt-link to="/" class="middleTitleHover">数据管理</nuxt-link>
+              <nuxt-link
+                :to="{
+                  path: '/product/wearClass',
+                  query: {
+                    type: 'PRODUCT_SHORT_MESSAGE',
+                    name: '北斗短报文类',
+                  },
+                }"
+                class="productHover middleTitleHover"
+                >北斗短报文</nuxt-link
+              >
             </li>
-          </ul> -->
+            <li>
+              <nuxt-link
+                :to="{
+                  path: '/product/wearClass',
+                  query: {
+                    type: 'PRODUCT_HIGH_ACCURACY_SURVEY',
+                    name: '高精度测量类',
+                  },
+                }"
+                class="productHover middleTitleHover"
+                >高精度测量</nuxt-link
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="middleTitle">
+          <nuxt-link to="/solution/solution" class="middleTitleName"
+            >解决方案</nuxt-link
+          >
+        </li>
+        <li class="middleTitle">
+          <nuxt-link to="/successCase/successCase" class="middleTitleName"
+            >成功案例</nuxt-link
+          >
         </li>
         <li class="middleTitle">
           <div class="middleTitleName">
@@ -77,21 +124,35 @@
           </div>
           <ul class="middleTitleList">
             <li>
-              <nuxt-link to="/news/company" class="middleTitleHover">公司要闻</nuxt-link>
+              <nuxt-link to="/news/company" class="middleTitleHover"
+                >公司要闻</nuxt-link
+              >
             </li>
             <li>
-              <nuxt-link to="/news/industry" class="middleTitleHover">行业新闻</nuxt-link>
+              <nuxt-link to="/news/industry" class="middleTitleHover"
+                >行业新闻</nuxt-link
+              >
             </li>
           </ul>
         </li>
         <li class="middleTitle">
-          <nuxt-link to="/contact/contact" class="middleTitleName">联系方式</nuxt-link>
+          <nuxt-link to="/contact/contact" class="middleTitleName"
+            >联系方式</nuxt-link
+          >
         </li>
         <li class="middleTitle">
-          <nuxt-link to="/recruit/recruit" class="middleTitleName">诚聘</nuxt-link>
+          <nuxt-link to="/recruit/recruit" class="middleTitleName"
+            >诚聘</nuxt-link
+          >
         </li>
       </ul>
-      <img src="/index/Web1x/bdtel.png" alt="tel" class="tel" />
+      <!-- <img src="/index/Web1x/bdtel.png" alt="tel" class="tel" /> -->
+      <div class="tel">
+        <div class="text">
+          <img src="/navTel.png" alt="" class="phoneLogo" />全国咨询电话
+        </div>
+        <div class="phoneNum">{{phoneNumber}} </div>
+      </div>
     </div>
     <div class="adBox">
       <img class="ad" src="/ad.png" alt="" />
@@ -100,7 +161,29 @@
 </template>
 
 <script>
-export default {};
+import fetchData from "@/utils/fetchData";
+export default {
+  data() {
+    return {
+      phoneNumber: "",
+    };
+  },
+  created() {
+    this.getData();
+  },
+  methods: {
+    async getData() {
+      let res = await fetchData({
+        url: "/server_config/list",
+        data: {
+          type: "SERVICE_PHONE",
+        },
+      });
+      if (!res) return;
+      this.phoneNumber = res.data[0].value;
+    },
+  },
+};
 </script>
 
 <style scoped lang="less">
@@ -116,50 +199,64 @@ export default {};
   width: 100%;
   // height: 137px;
   background-color: #fff;
+  // overflow: hidden;
   .nav {
+    display: flex;
+    justify-content: space-between;
     height: 47px;
-    width: 1360px;
+    width: 1340px;
     margin: 0 auto;
     z-index: 99;
     .logo {
-      float: left;
-      margin-top: 6px;
-      margin-right: 50px;
+      margin-top: 3px;
+      width: 232px;
+      height: 41px;
     }
     .tel {
-      float: right;
-      margin-top: 6px;
+      width: 125px;
+      height: 41px;
+      margin-top: 10px;
+      .phoneNum {
+        font-size: 14px;
+        font-family: MicrosoftYaHei, MicrosoftYaHei-Bold;
+        font-weight: 700;
+        color: #3d93fd;
+        line-height: 19px;
+      }
+      .text {
+        font-size: 14px;
+        font-family: MicrosoftYaHei;
+        color: #3d93fd;
+        line-height: 16px;
+      }
+      .phoneLogo {
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+        vertical-align: -2px;
+      }
     }
     .middle {
       list-style: none;
       color: #000;
       > li {
         float: left;
-        margin-right: 40px;
-
+        margin-right: 10px;
+        width: 86px;
         height: 44px;
         line-height: 47px;
-        // border-bottom: 3px solid #3d93fd;
       }
-      // .homePage {
-      // width: 59px;
-      // height: 19px;
-      // font-size: 14px;
-      // font-family: MicrosoftYaHei;
-      // text-align: right;
-      // color: #ffffff;
-      // line-height: 19px;
-      // }
+
       .middleTitle {
         a {
           color: #000;
           font-family: MicrosoftYaHei;
         }
         > a {
-          padding: 12px 22px;
+          padding: 12px 15px;
         }
         position: relative;
-        width: 100px;
+        // width: 100px;
         text-align: center;
         font-size: 14px;
         font-family: MicrosoftYaHei;
@@ -169,6 +266,7 @@ export default {};
           cursor: pointer;
         }
         .middleTitleList {
+          width: 80px;
           display: none;
           background-color: #fff;
           text-align: center;
@@ -195,7 +293,7 @@ export default {};
     .ad {
       width: 100%;
       height: auto;
-      min-width: 1360px;
+      min-width: 1340px;
     }
   }
 }

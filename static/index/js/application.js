@@ -56,5 +56,5 @@
 
     info(empile1);
 
-  }, 1000)
+  }, 2000)
 })(document);

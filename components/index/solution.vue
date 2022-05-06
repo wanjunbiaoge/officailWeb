@@ -5,35 +5,53 @@
     <div class="productBox">
       <ul>
         <li v-for="item in solutionList" :key="item.id">
-          <img :src="item.src" alt="" />
+          <img :src="$imgUrl + item.fileName" alt="" />
+          <nuxt-link
+            :to="{ path: '/solution/details/', query: { id: item.id } }"
+            class="solutionLink"
+          ></nuxt-link>
+          <div class="info">
+            <div class="infoTitle">{{item.title}} </div>
+            <div class="infoSubtitle">{{item.subtitle}} </div>
+          </div>
         </li>
       </ul>
     </div>
     <div class="more">
-      <nuxt-link to="/">更多</nuxt-link>
+      <nuxt-link to="/solution/solution">更多</nuxt-link>
     </div>
   </div>
 </template>
 <script>
+import fetchData from "@/utils/fetchData";
 export default {
   name: "solution",
   data() {
     return {
-      solutionList: [
-        { id: 0, src: "/index/Web1x/solution/shuju.png" },
-        { id: 1, src: "/index/Web1x/solution/shuju.png" },
-        { id: 2, src: "/index/Web1x/solution/shuju.png" },
-        { id: 3, src: "/index/Web1x/solution/shuju.png" },
-        { id: 4, src: "/index/Web1x/solution/shuju.png" },
-        { id: 5, src: "/index/Web1x/solution/shuju.png" },
-      ],
+      solutionList: [],
     };
+  },
+  methods: {
+    async getData() {
+      let res = await fetchData({
+        url: "/solution/list",
+        data: {},
+      });
+      if (!res) return;
+      this.solutionList = res.data;
+      this.solutionList.map((item) => {
+        item.fileName = "/attachment/get_file/" + item.fileName;
+      });
+    },
+  },
+  created() {
+    this.getData();
   },
 };
 </script>
 <style lang="less" scoped>
 .solution {
-  width: 1360px;
+  width: 1340px;
   margin: 0 auto;
   margin-top: 50px;
   .title {
@@ -57,7 +75,7 @@ export default {
     border-radius: 4px;
   }
   .productBox {
-    width: 1360px;
+    width: 1340px;
     height: 665px;
     // border: 1px solid red;
     ul {
@@ -68,10 +86,47 @@ export default {
     ul li {
       list-style: none;
       // float: left;
+      position: relative;
       margin-bottom: 20px;
       img {
         width: 430px;
         height: 320px;
+      }
+      .solutionLink {
+        position: absolute;
+        display: inline-block;
+        width: 430px;
+        height: 320px;
+        left: 0;
+        top: 0;
+      }
+      .info {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 84px;
+        background: rgba(0, 0, 0, 0.4);
+        color: #ffffff;
+        .infoTitle {
+          height: 24px;
+          font-size: 18px;
+          font-family: MicrosoftYaHei, MicrosoftYaHei-Bold;
+          font-weight: 700;
+          text-align: left;
+          line-height: 24px;
+          margin-top: 15px;
+          margin-left: 20px;
+        }
+        .infoSubtitle {
+          margin-top: 6px;
+          margin-left: 20px;
+          font-size: 14px;
+          height: 19px;
+          line-height: 19px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
       }
     }
   }

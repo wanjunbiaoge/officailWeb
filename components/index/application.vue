@@ -11,7 +11,8 @@
       <ul class="container">
         <li class="cards-list" v-for="item in appList" :key="item.id">
           <div class="img">
-            <img :src="item.src" alt="" />
+            <img :src="$imgUrl + item.fileName" alt="" />
+            <div class="info">{{item.title}}</div>
           </div>
         </li>
       </ul>
@@ -19,6 +20,7 @@
   </div>
 </template>
 <script>
+import fetchData from "@/utils/fetchData";
 export default {
   name: "application",
   head() {
@@ -33,22 +35,30 @@ export default {
   },
   data() {
     return {
-      appList: [
-        { id: 0, src: "/index/Web1x/application/jiaotong.png" },
-        { id: 1, src: "/index/Web1x/application/jiaotong.png" },
-        { id: 2, src: "/index/Web1x/application/jiaotong.png" },
-        { id: 3, src: "/index/Web1x/application/jiaotong.png" },
-        { id: 4, src: "/index/Web1x/application/jiaotong.png" },
-        { id: 5, src: "/index/Web1x/application/jiaotong.png" },
-        { id: 6, src: "/index/Web1x/application/jiaotong.png" },
-      ],
+      appList: [],
     };
+  },
+  methods: {
+    async getData() {
+      let res = await fetchData({
+        url: "/application_area/list",
+        data: {},
+      });
+      if (!res) return;
+      this.appList = res.data;
+      this.appList.map((item) => {
+        item.fileName = "/attachment/get_file/" + item.fileName;
+      });
+    },
+  },
+  created() {
+    this.getData();
   },
 };
 </script>
 <style lang="less" scoped>
 .application {
-  width: 1360px;
+  width: 1340px;
   height: 660px;
   margin: 0 auto;
   margin-top: 30px;
@@ -70,6 +80,24 @@ export default {
     height: 2px;
     background: radial-gradient(#3e92fc, #00efe1, #00efe1);
     border-radius: 4px;
+  }
+  .container {
+    .img {
+      position: relative;
+      .info {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        text-align: center;
+        font-size: 18px;
+        font-family: MicrosoftYaHei, MicrosoftYaHei-Bold;
+        font-weight: 700;
+        color: #ffffff;
+        background: rgba(0,0,0,0.30);
+        line-height: 60px;
+      }
+    }
   }
   // .el-carousel__item h3 {
   //   color: #475669;

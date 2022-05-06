@@ -8,6 +8,7 @@
     <IndexProductShow />
     <IndexSolution />
     <IndexSuccessCase />
+    <!-- <div class="wei"></div> -->
     <CommonFooter />
   </div>
 </template>
@@ -23,9 +24,20 @@ export default {
 </script>
 
 <style scoped lang="less">
-.wrap{
+.wrap {
   position: relative;
   width: 100%;
   margin: 0 auto;
+  .wei {
+    width: 100%;
+    height: 70px;
+    margin-top: 70px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .wrap {
+    width: 1340px;
+    overflow: hidden;
+  }
 }
 </style>

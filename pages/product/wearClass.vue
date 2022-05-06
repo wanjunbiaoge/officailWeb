@@ -3,18 +3,13 @@
     <CommonHeader />
     <ProductBread :name="breadName" />
     <div class="container">
-      <div class="left">
-        <ProductInfo />
-      </div>
       <div class="right">
-        <div class="rightWear">
-          <ul>
-            <li class="rightWearImgBox" v-for="item in wearList" :key="item.id">
-              <img :src="item.src" alt="" />
-              <p class="info">{{ item.info }}</p>
-            </li>
-          </ul>
-        </div>
+        <ul>
+          <li class="rightWearImgBox" v-for="item in wearList" :key="item.id">
+            <img :src="$imgUrl + item.fileName" alt="" />
+            <p class="info">{{ item.title }}</p>
+          </li>
+        </ul>
         <CommonPagenation :pagenation="pagenation" :getData="getData" />
       </div>
     </div>
@@ -22,25 +17,50 @@
   </div>
 </template>
 <script>
+import fetchData from "@/utils/fetchData";
 export default {
+  watchQuery: true,
+  watchQuery: ["type"],
+  asyncData({ query }) {
+    return {
+      type: query.type,
+      breadName: query.name,
+    };
+  },
   data() {
     return {
-      breadName: "穿戴类",
-      wearList: [
-        { id: 0, src: "/zizhi/guanli1.png", info: "环境管理体系认证证书" },
-        { id: 1, src: "/zizhi/guanli1.png", info: "环境管理体系认证证书" },
-        { id: 2, src: "/zizhi/guanli1.png", info: "环境管理体系认证证书" },
-        { id: 3, src: "/zizhi/guanli1.png", info: "环境管理体系认证证书" },
-      ],
+      wearList: [],
       pagenation: {
-        pageTotal: 10,
+        pageTotal: 0,
         pageNumber: 1,
       },
     };
   },
+  watch: {
+    type(value) {
+      this.$router.push({
+        path: "/product/wearClass",
+        query: { type: value },
+      });
+      this.getData();
+    },
+    immediate: true,
+  },
+  created() {
+    this.getData();
+  },
   methods: {
     async getData() {
-      console.log("getData");
+      let res = await fetchData({
+        url: "/product/list/",
+        data: { type: this.type },
+      });
+      this.wearList = res.data;
+      this.wearList.map((item) => {
+        item.fileName = "/attachment/get_file/" + item.fileName;
+      });
+      this.pagenation.pageTotal = res.total;
+      this.pagenation.pageNumber = res.pages;
     },
   },
 };
@@ -48,31 +68,29 @@ export default {
 <style lang="less" scoped>
 .wearClass {
   .container {
-    width: 1360px;
+    width: 1340px;
     margin: 0 auto;
     margin-top: 10px;
     overflow: hidden;
-    .left {
-      float: left;
-      width: 200px;
-      height: 600px;
-    }
+
     .right {
       float: right;
-      width: 1100px;
-      .rightWear {
+      width: 1340px;
+      ul {
+        width: 1340px;
         overflow: hidden;
         .rightWearImgBox {
           float: left;
-          margin-right: 32px;
-          margin-bottom: 20px;
-          width: 320px;
-          height: 250px;
+          margin-right: 20px;
+          margin-bottom: 30px;
+          width: 300px;
+          height: 230px;
           padding: 10px;
           background: #ffffff;
           box-shadow: 0px 6px 11.52px 0.48px rgba(0, 0, 0, 0.13);
           img {
-            width: 320px;
+            width: 300px;
+            height: 200px;
           }
           .info {
             margin-top: 20px;
@@ -81,7 +99,10 @@ export default {
             text-align: center;
           }
         }
-        .rightWearImgBox:nth-child(3) {
+        .rightWearImgBox:nth-child(4) {
+          margin-right: 0 !important;
+        }
+        .rightWearImgBox:nth-child(8) {
           margin-right: 0 !important;
         }
       }

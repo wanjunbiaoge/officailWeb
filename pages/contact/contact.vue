@@ -3,25 +3,43 @@
     <CommonHeader />
     <ContactBread :name="breadName" />
     <div class="container">
-      <div class="left">
-        <ContactInfo />
-      </div>
-      <div class="right">
+      <div class="content">
         <div id="map"></div>
         <div class="line"></div>
         <div class="contactBox">
           <div class="contactUs">
-            <div class="title">联系我们   /   Contact Us</div>
+            <div class="title">联系我们 / Contact Us</div>
             <div class="underline"></div>
-            <p class="tel">联系电话：{{ contactInfo.tel }}</p>
-            <p class="people">联系人：{{ contactInfo.people }}</p>
-            <p class="mail">邮箱：{{ contactInfo.mail }}</p>
-            <p class="address">地址：{{ contactInfo.address }}</p>
+            <div v-html="contactDetail"></div>
           </div>
           <div class="message">
             <p>
-              <label for=""></label>
+              <label for="messageTitle">标题</label
+              ><input type="text" v-model="form.title" id="messageTitle" />
             </p>
+            <p>
+              <label for="messageUser">联系人</label
+              ><input type="text" v-model="form.contactMen" id="messageUser" />
+            </p>
+            <p>
+              <label for="messageTel">联系电话</label
+              ><input type="text" v-model="form.contactPhone" id="messageTel" />
+            </p>
+            <div>
+              <label for="messageInfo">意向描述</label
+              ><textarea id="messageInfo" v-model="form.messageDetail" />
+            </div>
+            <p>
+              <label for="messageCode">验证码</label
+              ><input type="text" v-model="form.authCode" id="messageCode" />
+              <img
+                :src="codeSrc"
+                alt=""
+                @click="getCode"
+                style="cursor: pointer"
+              />
+            </p>
+            <button type="submit" @click="submit">提交</button>
           </div>
         </div>
       </div>
@@ -30,31 +48,56 @@
   </div>
 </template>
 <script>
+import BASE_URL from "@/utils/env";
+import fetchData from "@/utils/fetchData";
+import axios from "axios";
 export default {
   head() {
     //引入百度地图
     return {
       script: [
         {
-          src: "https://api.map.baidu.com/getscript?v=1.0&type=webgl&ak=hIW0tTxxfLQkTEuvSsuPTEtqEPAtXroh",
+          src: "https://api.map.baidu.com/api?v=1.0&type=webgl&ak=hIW0tTxxfLQkTEuvSsuPTEtqEPAtXroh",
         },
       ],
     };
   },
   data() {
     return {
-      breadName: "联系我们",
-      contactInfo: {
-        tel: "028-86036000",
-        people: "袁先生",
-        mail: "342924062@qq.com",
-        address: "成都府城大道399号天府新谷10栋1501",
+      breadName: "",
+      contactDetail: "",
+      form: {
+        title: "",
+        contactMen: "",
+        contactPhone: "",
+        messageDetail: "",
+        authCode: "",
+        authentication: "",
       },
+      // codeSrc: BASE_URL + "/message/auth_code",
+      codeSrc: "",
     };
   },
+  created() {
+    this.getData();
+    this.getCode();
+  },
   methods: {
+    async getCode() {
+      let res = await fetchData({
+        url: "/message/auth_code",
+        method: "get",
+      });
+      if (!res) return;
+      this.codeSrc = "data:image/png;base64," + res.data.authCode;
+      this.form.authentication = res.data.authentication;
+    },
     async getData() {
-      console.log("getData");
+      let res = await fetchData({
+        url: "/contact_us/list",
+      });
+      if (!res) return;
+      this.contactDetail = res.data.contactDetail;
     },
     initMap() {
       var map = new BMapGL.Map("map"); // 创建地图实例
@@ -63,6 +106,20 @@ export default {
       map.addOverlay(marker);
       map.centerAndZoom(point, 16); // 初始化地图，设置中心点坐标和地图级别
       map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+    },
+    async submit() {
+      let res = await fetchData({
+        url: "/message/insert",
+        data: this.form,
+      });
+      if (!res) return;
+      this.$message({
+        message: "提交成功",
+        type: "success",
+      });
+      for (let i in this.form) {
+        this.form[i] = "";
+      }
     },
   },
   mounted() {
@@ -73,20 +130,14 @@ export default {
 <style lang="less" scoped>
 .contact {
   .container {
-    width: 1360px;
+    width: 1340px;
     margin: 0 auto;
     margin-top: 10px;
     overflow: hidden;
-    .left {
-      float: left;
-      width: 200px;
+
+    .content {
+      width: 1300px;
       height: 600px;
-    }
-    .right {
-      float: right;
-      width: 1100px;
-      height: 600px;
-      border: 1px solid red;
       #map {
         width: 99%;
         height: 300px;
@@ -100,7 +151,7 @@ export default {
       .contactBox {
         overflow: hidden;
         .contactUs {
-          width: 520px;
+          width: 620px;
           height: 230px;
           float: left;
           padding-left: 20px;
@@ -114,20 +165,50 @@ export default {
             border: 1px solid gray;
             margin: 10px 0;
           }
+        }
+        .message {
+          width: 550px;
+          height: 250px;
+          float: left;
+          padding-left: 50px;
+          div {
+            height: 50px;
+            margin-top: 15px;
+            textarea {
+              margin-left: 22px;
+              width: 200px;
+              border: 1px solid #ccc;
+              outline: none;
+            }
+          }
           p {
-            font-size: 16px;
-            line-height: 25px;
-            font-weight: bold;
-            color: #333;
+            height: 30px;
+            line-height: 30px;
+
+            label {
+              display: inline-block;
+              width: 70px;
+              font-size: 13px;
+            }
+            input {
+              border: 1px solid #ccc;
+              line-height: 20px;
+              width: 200px;
+            }
+          }
+          button {
+            width: 100px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin-top: 20px;
+            margin-left: 70px;
+            cursor: pointer;
           }
         }
-        .message{
-          width: 520px;
-          height: 230px;
-          float: left;
-          padding-left: 20px;
-        }
       }
+    }
+    #messageCode {
+      width: 100px;
     }
   }
 }
