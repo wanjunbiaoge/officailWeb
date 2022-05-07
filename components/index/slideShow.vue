@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       slideList: [],
-      bannerHeight: 570,
+      bannerHeight: 680,
       screenWidth: 1920,
     };
   },
@@ -43,12 +43,12 @@ export default {
         document.body.clientWidth;
       this.screenWidth = width;
       //图片                高 / 宽  700 / 1920
-      this.bannerHeight = (570 / 1920) * this.screenWidth - 50;
+      this.bannerHeight = (680 / 1920) * this.screenWidth - 50;
       document.getElementById("el-carousel").style.height =
         this.bannerHeight + "px";
     },
     setSize() {
-      this.bannerHeight = (570 / 1920) * this.screenWidth - 50;
+      this.bannerHeight = (680 / 1920) * this.screenWidth - 50;
       document.getElementById("el-carousel").style.height =
         this.bannerHeight + "px";
     },

@@ -143,5 +143,11 @@ export default {
       color: #3d93fd;
     }
   }
+  .more:hover {
+    background-color: #3d93fd;
+    a {
+      color: #fff;
+    }
+  }
 }
 </style>

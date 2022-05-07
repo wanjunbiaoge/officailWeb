@@ -1,9 +1,6 @@
 <template>
   <div class="commonFooter">
-    <p>
-      四川北斗卫星导航平台有限公司2012 版权所有 川B2-20080058号Copyright 2016
-      BEIDOU technology Co., LT
-    </p>
+    <p>四川北斗卫星导航平台有限公司版权所有</p>
   </div>
 </template>
 <script>

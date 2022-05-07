@@ -7,7 +7,10 @@
         <li class="car">
           <img src="/index/Web1x/productShow/car.png" alt="" />
           <nuxt-link
-            :to="{path:'/product/wearClass',query:{type:'PRODUCT_VEHICLE_TERMINAL',name:'车载终端类'}}"
+            :to="{
+              path: '/product/wearClass',
+              query: { type: 'PRODUCT_VEHICLE_TERMINAL', name: '车载终端类' },
+            }"
             class="productLink carLink"
           ></nuxt-link>
           <span>车载终端类</span>
@@ -15,7 +18,10 @@
         <li class="chuandai">
           <img src="/index/Web1x/productShow/chuandai.png" alt="" />
           <nuxt-link
-            :to="{path:'/product/wearClass',query:{type:'PRODUCT_WEAR',name:'穿戴类'}}"
+            :to="{
+              path: '/product/wearClass',
+              query: { type: 'PRODUCT_WEAR', name: '穿戴类' },
+            }"
             class="productLink wearLink"
           ></nuxt-link>
           <span>穿戴类</span>
@@ -23,7 +29,10 @@
         <li class="hand">
           <img src="/index/Web1x/productShow/hand.png" alt="" />
           <nuxt-link
-            :to="{path:'/product/wearClass',query:{type:'PRODUCT_HAND_HOLD',name:'手持便携类'}}"
+            :to="{
+              path: '/product/wearClass',
+              query: { type: 'PRODUCT_HAND_HOLD', name: '手持便携类' },
+            }"
             class="productLink holdLink"
           ></nuxt-link>
           <span>手持便携类</span>
@@ -31,7 +40,10 @@
         <li class="gongneng">
           <img src="/index/Web1x/productShow/gongneng.png" alt="" />
           <nuxt-link
-            :to="{path:'/product/wearClass',query:{type:'PRODUCT_FUNCTION',name:'功能类'}}"
+            :to="{
+              path: '/product/wearClass',
+              query: { type: 'PRODUCT_FUNCTION', name: '功能类' },
+            }"
             class="productLink funLink"
           ></nuxt-link>
           <span>功能类</span>
@@ -39,7 +51,13 @@
         <li class="celiang">
           <img src="/index/Web1x/productShow/celiang.png" alt="" />
           <nuxt-link
-            :to="{path:'/product/wearClass',query:{type:'PRODUCT_HIGH_ACCURACY_SURVEY',name:'高精度测量类'}}"
+            :to="{
+              path: '/product/wearClass',
+              query: {
+                type: 'PRODUCT_HIGH_ACCURACY_SURVEY',
+                name: '高精度测量类',
+              },
+            }"
             class="productLink celiangLink"
           ></nuxt-link>
           <span>高精度测量类</span>
@@ -47,7 +65,10 @@
         <li class="beidou">
           <img src="/index/Web1x/productShow/beidou.png" alt="" />
           <nuxt-link
-            :to="{path:'/product/wearClass',query:{type:'PRODUCT_SHORT_MESSAGE',name:'北斗短报文类'}}"
+            :to="{
+              path: '/product/wearClass',
+              query: { type: 'PRODUCT_SHORT_MESSAGE', name: '北斗短报文类' },
+            }"
             class="productLink beidouLink"
           ></nuxt-link>
           <span>北斗短报文类</span>
@@ -201,6 +222,12 @@ export default {
       padding: 10px 105px 10px 110px;
       line-height: 32px;
       color: #3d93fd;
+    }
+  }
+  .more:hover {
+    background-color: #3d93fd;
+    a {
+      color: #fff;
     }
   }
 }

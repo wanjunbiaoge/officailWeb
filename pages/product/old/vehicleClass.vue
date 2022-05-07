@@ -44,7 +44,6 @@ export default {
   },
   methods: {
     async getData() {
-      console.log("getData");
     },
   },
 };

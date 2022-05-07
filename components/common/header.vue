@@ -1,7 +1,10 @@
 <template>
   <div class="commonHeader">
     <div class="nav">
-      <img src="/bdLogoBlue.png" alt="logo" class="logo" />
+      <div class="logoBox">
+        <img src="/bdLogoBlue.png" alt="logo" class="logo" />
+        <nuxt-link to="/" class="logoLink"></nuxt-link>
+      </div>
       <ul class="middle">
         <li class="middleTitle">
           <nuxt-link to="/" class="middleTitleName">网站首页</nuxt-link>
@@ -151,7 +154,7 @@
         <div class="text">
           <img src="/navTel.png" alt="" class="phoneLogo" />全国咨询电话
         </div>
-        <div class="phoneNum">{{phoneNumber}} </div>
+        <div class="phoneNum">{{ phoneNumber }}</div>
       </div>
     </div>
     <div class="adBox">
@@ -207,10 +210,19 @@ export default {
     width: 1340px;
     margin: 0 auto;
     z-index: 99;
-    .logo {
-      margin-top: 3px;
-      width: 232px;
-      height: 41px;
+    .logoBox {
+      position: relative;
+      .logo {
+        margin-top: 3px;
+        width: 232px;
+        height: 41px;
+      }
+      .logoLink {
+        position: absolute;
+        width: 232px;
+        height: 41px;
+        left: 0;
+      }
     }
     .tel {
       width: 125px;
@@ -276,7 +288,8 @@ export default {
       }
       .middleTitleList .middleTitleHover:hover {
         cursor: pointer;
-        text-decoration: underline;
+        // text-decoration: underline;
+        color: #fff;
       }
       .middleTitleList li:hover {
         background-color: #3d93fd;

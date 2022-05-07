@@ -51,7 +51,8 @@ export default {
 </script>
 <style lang="less" scoped>
 .solution {
-  width: 1340px;
+  // width: 1340px;
+  width: 100%;
   margin: 0 auto;
   margin-top: 50px;
   .title {
@@ -77,6 +78,7 @@ export default {
   .productBox {
     width: 1340px;
     height: 665px;
+    margin: 0 auto;
     // border: 1px solid red;
     ul {
       display: flex;
@@ -141,6 +143,12 @@ export default {
       padding: 10px 105px 10px 110px;
       line-height: 32px;
       color: #3d93fd;
+    }
+  }
+  .more:hover {
+    background-color: #3d93fd;
+    a {
+      color: #fff;
     }
   }
 }

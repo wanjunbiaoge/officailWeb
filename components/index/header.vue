@@ -276,7 +276,7 @@ export default {
       }
       .middleTitleList .middleTitleHover:hover {
         cursor: pointer;
-        text-decoration: underline;
+        // text-decoration: underline;
       }
       .middleTitleList li:hover {
         background-color: #3d93fd;

@@ -12,7 +12,7 @@
         <li class="cards-list" v-for="item in appList" :key="item.id">
           <div class="img">
             <img :src="$imgUrl + item.fileName" alt="" />
-            <div class="info">{{item.title}}</div>
+            <div class="info">{{ item.title }}</div>
           </div>
         </li>
       </ul>
@@ -86,15 +86,16 @@ export default {
       position: relative;
       .info {
         position: absolute;
-        bottom: 0;
-        width: 100%;
+        bottom: 39px;
+        left: 38px;
+        width: 84%;
         height: 60px;
         text-align: center;
         font-size: 18px;
         font-family: MicrosoftYaHei, MicrosoftYaHei-Bold;
         font-weight: 700;
         color: #ffffff;
-        background: rgba(0,0,0,0.30);
+        background: rgba(0, 0, 0, 0.3);
         line-height: 60px;
       }
     }

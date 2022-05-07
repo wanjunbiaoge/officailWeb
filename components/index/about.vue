@@ -29,10 +29,11 @@ export default {
 </script>
 <style lang="less" scoped>
 .about {
-  width: 1340px;
+  // width: 1340px;
+  width: 100%;
   height: 250px;
   margin: 0 auto;
-  margin-top: 40px;
+  padding-top: 40px;
   .title {
     margin: 0 auto;
     width: 220px;

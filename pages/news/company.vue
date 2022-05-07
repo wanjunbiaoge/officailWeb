@@ -14,10 +14,12 @@
             ></nuxt-link>
             <div class="timeBox">
               <div class="updateTime">
-                <i class="el-icon-time" style="marginRight:5px"></i>{{ item.updateTime.split(" ")[0] }}
+                <i class="el-icon-time" style="marginright: 5px"></i
+                >{{ item.updateTime.split(" ")[0] }}
               </div>
               <div class="viewCounts">
-                <i class="el-icon-view" style="marginRight:5px"></i>{{ item.viewCounts }}
+                <i class="el-icon-view" style="marginright: 5px"></i
+                >{{ item.viewCounts }}
               </div>
             </div>
           </li>
@@ -70,31 +72,36 @@ export default {
     .news {
       width: 1340px;
       overflow: hidden;
-      .newsImgBox {
-        float: left;
-        margin-right: 20px;
-        margin-bottom: 20px;
-        width: 300px;
-        height: 270px;
-        padding: 10px;
-        background: #ffffff;
-        box-shadow: 0px 6px 11.52px 0.48px rgba(0, 0, 0, 0.13);
-        img {
+      ul {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        .newsImgBox {
+          // float: left;
+          margin-right: 20px;
+          margin-bottom: 20px;
           width: 300px;
-          height: 200px;
-        }
-        .info {
-          height: 36px;
-          margin-top: 10px;
-          font-size: 14px;
-          font-weight: 700;
-          line-height: 18px;
-        }
-        .toDetail {
-          display: inline-block;
-          width: 300px;
-          height: 250px;
-          margin-top: -240px;
+          height: 275px;
+          padding: 10px;
+          background: #ffffff;
+          box-shadow: 0px 6px 11.52px 0.48px rgba(0, 0, 0, 0.13);
+          img {
+            width: 300px;
+            height: 200px;
+          }
+          .info {
+            height: 36px;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 18px;
+          }
+          .toDetail {
+            display: inline-block;
+            width: 300px;
+            height: 250px;
+            margin-top: -240px;
+          }
         }
       }
       .timeBox {
