@@ -38,7 +38,7 @@ export default {
         data: {},
       });
       if (!res) return;
-      this.solutionList = res.data;
+      this.solutionList = res.data.slice(0,6);
       this.solutionList.map((item) => {
         item.fileName = "/attachment/get_file/" + item.fileName;
       });

@@ -39,7 +39,7 @@ export default {
         data: {},
       });
       if (!res) return;
-      this.successList = res.data;
+      this.successList = res.data.slice(0,6);
       this.successList.map((item) => {
         item.fileName = "/attachment/get_file/" + item.fileName;
       });
