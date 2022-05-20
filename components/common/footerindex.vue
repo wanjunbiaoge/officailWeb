@@ -27,10 +27,4 @@ export default {
     line-height: 65px;
   }
 }
-@media screen and (min-height: 1100px) {
-  .commonFooter {
-    position: fixed;
-    bottom: 0;
-  }
-}
 </style>

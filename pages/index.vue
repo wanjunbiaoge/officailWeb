@@ -9,7 +9,7 @@
     <IndexSolution />
     <IndexSuccessCase />
     <!-- <div class="wei"></div> -->
-    <CommonFooter />
+    <CommonFooterindex />
   </div>
 </template>
 
@@ -34,10 +34,5 @@ export default {
     margin-top: 70px;
   }
 }
-@media screen and (max-width: 1400px) {
-  .wrap {
-    width: 1340px;
-    overflow: hidden;
-  }
-}
+
 </style>

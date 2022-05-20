@@ -91,7 +91,7 @@ export default {
           .infoBox {
             float: left;
             padding-left: 30px;
-            width: 250px;
+            width: 280px;
             height: 200px;
             .title {
               font-size: 18px;
@@ -107,7 +107,7 @@ export default {
               line-height: 16px;
               display: -webkit-box;
               overflow: hidden;
-              text-indent: 28px;
+              // text-indent: 28px;
             }
             .timeBox {
               display: flex;

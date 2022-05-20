@@ -55,6 +55,10 @@ export default {
   width: 100%;
   margin: 0 auto;
   margin-top: 50px;
+  background: url(/solutionBg.jpg) no-repeat;
+  background-size: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
   .title {
     margin: 0 auto;
     width: 220px;
@@ -63,7 +67,7 @@ export default {
     font-family: MicrosoftYaHei, MicrosoftYaHei-Bold;
     font-weight: 700;
     text-align: center;
-    color: #000000;
+    color: #fff;
     line-height: 37px;
   }
   .line {

@@ -84,6 +84,12 @@ export default {
       width: 100%;
     }
   }
+  .el-carousel__indicators--horizontal{
+    bottom:25px
+  }
+  .el-carousel__button{
+    height: 5px;
+  }
 }
 
 </style>

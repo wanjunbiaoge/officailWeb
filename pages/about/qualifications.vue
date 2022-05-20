@@ -60,11 +60,11 @@ export default {
         data: { aptitudeType: "APTITUDE_STATUS" },
       });
       let resCer = await fetchData({
-        url: "/solution/list",
+        url: "/company_aptitude/list",
         data: { aptitudeType: "APTITUDE_CERTIFICATE" },
       });
       let resPaten = await fetchData({
-        url: "/solution/list",
+        url: "/company_aptitude/list",
         data: { aptitudeType: "APTITUDE_PATENT" },
       });
       if (!resHonor && !resCer && !resPaten ) return;
@@ -133,7 +133,7 @@ export default {
           text-align: center;
         }
       }
-      .honorImgBox:nth-child(5) {
+      .honorImgBox:nth-child(5n) {
         margin-right: 0 !important;
       }
     }
@@ -159,7 +159,7 @@ export default {
           text-align: center;
         }
       }
-      .certificateImgBox:nth-child(4) {
+      .certificateImgBox:nth-child(4n) {
         margin-right: 0 !important;
       }
     }
@@ -171,7 +171,7 @@ export default {
         margin-right: 20px;
         margin-bottom: 20px;
         width: 230px;
-        height: 300px;
+        height: 310px;
         padding: 10px;
         background: #ffffff;
         box-shadow: 0px 6px 11.52px 0.48px rgba(0, 0, 0, 0.13);
@@ -186,7 +186,7 @@ export default {
           text-align: center;
         }
       }
-      .patentImgBox:nth-child(5) {
+      .patentImgBox:nth-child(5n) {
         margin-right: 0 !important;
       }
     }

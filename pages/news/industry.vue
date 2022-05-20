@@ -107,10 +107,7 @@ export default {
           display: flex;
           justify-content: space-between;
         }
-        .newsImgBox:nth-child(4) {
-          margin-right: 0 !important;
-        }
-        .newsImgBox:nth-child(8) {
+        .newsImgBox:nth-child(4n) {
           margin-right: 0 !important;
         }
       }

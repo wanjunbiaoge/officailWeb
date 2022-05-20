@@ -30,10 +30,13 @@ export default {
 <style lang="less" scoped>
 .about {
   // width: 1340px;
+  overflow: hidden;
   width: 100%;
-  height: 250px;
+  height: 330px;
   margin: 0 auto;
   padding-top: 40px;
+  background: url(/aboutUsBg.jpg) no-repeat;
+  background-size: 100%;
   .title {
     margin: 0 auto;
     width: 220px;
@@ -42,7 +45,7 @@ export default {
     font-family: MicrosoftYaHei, MicrosoftYaHei-Bold;
     font-weight: 700;
     text-align: center;
-    color: #000000;
+    color: #fff;
     line-height: 37px;
   }
   .line {
@@ -50,18 +53,19 @@ export default {
     margin-top: 5px;
     width: 42px;
     height: 2px;
-    background: radial-gradient(#3e92fc, #00efe1, #00efe1);
+    // background: radial-gradient(#3e92fc, #00efe1, #00efe1);
+    background: #fff;
     border-radius: 4px;
   }
   .container {
     margin: 0 auto;
     margin-top: 40px;
     width: 1340px;
-    height: 156px;
+    height: 200px;
     font-size: 14px;
     font-family: MicrosoftYaHei;
     text-align: justify;
-    color: #000000;
+    color: #fff;
     line-height: 26px;
   }
 }

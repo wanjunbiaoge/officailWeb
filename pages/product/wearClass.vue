@@ -82,9 +82,9 @@ export default {
         .rightWearImgBox {
           float: left;
           margin-right: 20px;
-          margin-bottom: 30px;
+          margin-bottom: 20px;
           width: 300px;
-          height: 230px;
+          height: 240px;
           padding: 10px;
           background: #ffffff;
           box-shadow: 0px 6px 11.52px 0.48px rgba(0, 0, 0, 0.13);
@@ -99,10 +99,7 @@ export default {
             text-align: center;
           }
         }
-        .rightWearImgBox:nth-child(4) {
-          margin-right: 0 !important;
-        }
-        .rightWearImgBox:nth-child(8) {
+        .rightWearImgBox:nth-child(4n) {
           margin-right: 0 !important;
         }
       }

@@ -179,6 +179,7 @@ export default {
               width: 200px;
               border: 1px solid #ccc;
               outline: none;
+              resize: none;
             }
           }
           p {
